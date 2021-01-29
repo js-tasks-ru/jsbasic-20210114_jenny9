@@ -4,6 +4,7 @@
  * @returns {string}  объект
  */
 function getMinMax(str) {
+
   let arr = str
     .match(/[+-]?\d+(?:\.\d+)?/g)
     .sort((a, b) => a - b);
