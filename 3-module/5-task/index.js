@@ -1,8 +1,16 @@
 /**
  * Найти min/max в произвольной строке
  * @param   {string} str -  входные данные
- * @returns {{min:number, max:number}}  объект
+ * @returns {string}  объект
  */
 function getMinMax(str) {
-  // ваш код...
+
+  let arr = str
+    .match(/[+-]?\d+(?:\.\d+)?/g)
+    .sort((a, b) => a - b);
+
+  return {
+    min: +arr[0],
+    max: +arr[arr.length - 1]
+  };
 }
