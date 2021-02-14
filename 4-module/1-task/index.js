@@ -6,9 +6,12 @@
 function makeFriendsList(friends) {
   let tagUl = document.createElement('ul');
 
-  friends.forEach(function(item) {
-    let tagsLi = document.createElement('li');
-    tagsLi.innerHTML = item[0] + item[1];
+  friends.forEach(function(friend) {
+    const tagsLi = document.createElement('li');
+    const friendName = friend.firstName;
+    const friendLastname = friend.lastName;
+
+    tagsLi.innerHTML = friendName + " " + friendLastname;
     tagUl.append(tagsLi);
   });
   return tagUl;
