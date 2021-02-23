@@ -31,6 +31,7 @@ export default class UserTable {
     table.appendChild(tbody);
     for (let user of users) {
       const tr = document.createElement("tr");
+      tr.classList.add("row");
       tr.innerHTML = `
           <td>${user.name}</td>
           <td>${user.salary}</td>
@@ -46,7 +47,7 @@ export default class UserTable {
 
     this.elem.addEventListener('click', (event) => {
       if (event.target.className === 'closeButton') {
-        const user = event.target.closest('tr');
+        const user = event.target.closest('.row');
         user.remove();
       }
     });
