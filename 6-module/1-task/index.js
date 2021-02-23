@@ -12,10 +12,9 @@
  */
 export default class UserTable {
   constructor(users) {
-    const table = document.createElement("table"); // создать таблицу
-    const tbody = document.createElement("tbody"); // создать тело таблицы
+    const table = document.createElement("table");
+    const tbody = document.createElement("tbody");
 
-    // создать заголовки таблицы
     const thead = `
       <thead>
          <tr>
@@ -29,9 +28,7 @@ export default class UserTable {
     `;
     table.innerHTML = thead;
 
-    // тело таблицы
     table.appendChild(tbody);
-    // заполнить контентом тело таблицы
     for (let user of users) {
       const tr = document.createElement("tr");
       tr.innerHTML = `
@@ -44,11 +41,14 @@ export default class UserTable {
       `;
       tbody.appendChild(tr); // появись контент в теле таблицы
     }
-    console.log(table);
+
     this.elem = table;
-  }
 
-  deleteRowOnClick() {
-
+    this.elem.addEventListener('click', (event) => {
+      if (event.target.className === 'closeButton') {
+        const user = event.target.closest('tr');
+        user.remove();
+      }
+    });
   }
 }
