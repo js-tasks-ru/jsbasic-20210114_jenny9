@@ -11,13 +11,12 @@
  *      }
  */
 export default class UserTable {
-  constructor(rows) {
+  constructor(users) {
     const table = document.createElement("table"); // создать таблицу
-    this.table = table;
     const tbody = document.createElement("tbody"); // создать тело таблицы
 
     // создать заголовки таблицы
-    const tableHeader = `
+    const thead = `
       <thead>
          <tr>
             <th>Имя</th>
@@ -28,11 +27,12 @@ export default class UserTable {
          </tr>
       </thead>
     `;
-    table.innerHTML = tableHeader;
+    table.innerHTML = thead;
 
-    table.appendChild(tbody); // тело таблицы появись
-
-    for (let user of rows) {
+    // тело таблицы
+    table.appendChild(tbody);
+    // заполнить контентом тело таблицы
+    for (let user of users) {
       const tr = document.createElement("tr");
       tr.innerHTML = `
           <td>${user.name}</td>
@@ -42,11 +42,12 @@ export default class UserTable {
             <button class="closeButton">X</button>
           </td>
       `;
-      tbody.append(tr); // появись контент в теле таблицы
+      tbody.appendChild(tr); // появись контент в теле таблицы
     }
+    console.log(table);
+    this.elem = table;
   }
 
-  // метод удаления строки по нажатию кнопки
   deleteRowOnClick() {
 
   }
